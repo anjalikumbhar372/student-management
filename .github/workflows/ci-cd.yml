@@ -30,7 +30,7 @@ jobs:
           aws-region: ap-south-1 
 
       - name: Push Artifacts to s3
-        run: aws s3 cp target/* s3://deploywithanjali.com/Artifacts/student.war
+        run: aws s3 cp target/*.war s3://deploywithanjali.com/Artifacts/student.war
           
 
         
