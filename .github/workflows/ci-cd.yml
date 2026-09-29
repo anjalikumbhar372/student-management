@@ -74,7 +74,7 @@ jobs:
         run: |
           aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 823787500858.dkr.ecr.ap-south-1.amazonaws.com
           docker tag student:latest 823787500858.dkr.ecr.ap-south-1.amazonaws.com/student:latest
-          docker push 823787500858.dkr.ecr.ap-south-1.amazonaws.com/student:latest3
+          docker push 823787500858.dkr.ecr.ap-south-1.amazonaws.com/student:latest
 
       - name: Terraform Installation
         uses: hashicorp/setup-terraform@v4
