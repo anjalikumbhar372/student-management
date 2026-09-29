@@ -23,7 +23,7 @@ jobs:
         run: mvn clean package
 
       - name: Cnfigure aws credentials
-        uses: aws-action/configure-aws-creditials@v6
+        uses: aws-actions/configure-aws-creditials@v6
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
