@@ -13,13 +13,13 @@ terraform {
   backend "s3" {
     bucket       = "mayur.comm"
     key          = "student-management/eks/terraform.tfstate"
-    region       = "us-west-2"
+    region       = "ap-south-1"
     use_lockfile = true
   }
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "ap-south-1"
 }
 
 # Fetch default VPC
