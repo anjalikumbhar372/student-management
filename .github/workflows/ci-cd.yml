@@ -81,17 +81,19 @@ jobs:
         with:
           terraform_version: latest
 
-      - name: Terraform init
+      - name: Terraform Init
         run: terraform init
 
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Terraform Apply 
+      - name: Terraform Apply
         run: terraform apply -auto-approve
 
-      - name: kubectl install
+      - name: kubectl Install
         uses: azure/setup-kubectl@v4
+        with:
+          version: latest
 
       - name: Deployment on Kubernetes
         run: |
