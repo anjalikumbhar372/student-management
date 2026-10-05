@@ -58,16 +58,14 @@ pipeline {
             }
         }
 
-        stage('Docker Build'){
-            steps{
+        stage('Docker Build') {
+            steps {
                 sh '''
                     docker build --no-cache -t student .
                     docker images
-                    '''
+                '''
             }
         }
-
-        
     }
              
 }
