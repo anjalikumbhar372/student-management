@@ -9,24 +9,25 @@ pipeline {
 
     stages {
 
-        stage('checkout'){
-            steps{
+        stage('Checkout') {
+            steps {
                 git 'https://github.com/anjalikumbhar372/student-management.git'
-                echo "Clonning is Successful"            }
+                echo "Cloning is Successful"
+            }
         }
-    }
 
         stage('Build') {
             steps {
                 sh '''
-                    maven clean package
+                    mvn clean package
                 '''
-        }
+            }
+
             post {
                 success {
                     archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                }
             }
         }
     }
 }
-
