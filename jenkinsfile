@@ -16,15 +16,15 @@ pipeline {
         }
     }
 
-    stage('Build'){
-        steps {
-            sh '''
-                mvn clean package
-                '''
+        stage('Build'){
+            steps {
+                sh '''
+                    mvn clean package
+                   '''
         }
-        post {
-            success {
-                archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
             }
         }
     }
