@@ -65,11 +65,29 @@ pipeline {
             }   '''
         }
 
+        stage('Push to ECR'){
+            steps{
+                sh '''
+                aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 823787500858.dkr.ecr.ap-south-1.amazonaws.com
+                docker tag student:latest 823787500858.dkr.ecr.ap-south-1.amazonaws.com/student:latest
+                docker push 823787500858.dkr.ecr.ap-south-1.amazonaws.com/student:latest
+                '''
+            }      
+        }
+
+        stage('Deployment on Kubernetes'){
+            steps{
+                sh '''
+                 aws eks update-kubeconfig --name my-eks-cluster --region ap-south-1
+                    kubectl apply -f k8s/
+                    kubectl get pods
+                    sleep 30
+                    kubectl get pods
+                    kubectl  get svc -o wide
+                    '''
+            }
+        }
         
-
-
-
-
     }
     
 }
